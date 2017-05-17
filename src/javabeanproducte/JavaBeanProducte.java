@@ -19,7 +19,7 @@ public class JavaBeanProducte {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws PropertyVetoException {
         
         PrimerBean b = new PrimerBean();
         Receptor r = new Receptor();
@@ -28,9 +28,6 @@ public class JavaBeanProducte {
         // Registro al receptor com a un listener de l'objecte PrimerBean
         b.addPropertyChangeListener(r);
         b.addVetoableChangeListener(rv);
-        
-        // Canvio el valor de la propietat sampleProperty per a provocar la reacció del receptor 
-        //b.setStock_actual(5);
         
         /**
          * STOCK ACTUAL
@@ -43,7 +40,7 @@ public class JavaBeanProducte {
         try {
             b.setStock_actual(-1);
         } catch (PropertyVetoException ex) {
-            System.out.println("No s'ha permés el canvi!!! \n");
+            System.out.println("No s'ha permés el canvi!!!");
         }
         
         // Ficar 0 com a valor de la propietat stock_actual
@@ -53,7 +50,7 @@ public class JavaBeanProducte {
         try {
             b.setStock_actual(0);
         } catch (PropertyVetoException ex) {
-            System.out.println("No s'ha permés el canvi!!!\n");
+            System.out.println("No s'ha permés el canvi!!!");
         }
         
         // Ficar 25 com a valor de la propietat stock_actual
@@ -80,7 +77,7 @@ public class JavaBeanProducte {
         try {
             b.setStock_minim(-1);
         } catch (PropertyVetoException ex) {
-            System.out.println("No s'ha permés el canvi!!! \n");
+            System.out.println("No s'ha permés el canvi!!!");
         }
         
         // Ficar 0 com a valor de la propietat stock_minim
@@ -100,7 +97,7 @@ public class JavaBeanProducte {
         try {
             b.setStock_minim(25);
         } catch (PropertyVetoException ex) {
-            System.out.println("No s'ha permés el canvi!!!\n");
+            System.out.println("No s'ha permés el canvi!!!");
         }
         
         System.out.println("\n\n");
@@ -116,7 +113,7 @@ public class JavaBeanProducte {
         try {
             b.setPvp(-1);
         } catch (PropertyVetoException ex) {
-            System.out.println("No s'ha permés el canvi!!! \n");
+            System.out.println("No s'ha permés el canvi!!!");
         }
         
         // Ficar 0 com a valor de la propietat PVP
@@ -126,7 +123,7 @@ public class JavaBeanProducte {
         try {
             b.setPvp(0);
         } catch (PropertyVetoException ex) {
-            System.out.println("No s'ha permés el canvi!!!\n");
+            System.out.println("No s'ha permés el canvi!!!");
         }
         
         // Ficar 25 com a valor de la propietat PVP
@@ -140,6 +137,19 @@ public class JavaBeanProducte {
         }
         
         System.out.println("\n\n");
+        
+        /**
+         * ANY DE FABRICACIO
+         */
+        System.out.println("\nIntent de canvi a la propietat Any de fabricació.");
+        System.out.println("Valor actual: " + b.getAny_fabricacio());
+        System.out.println("Nou valor: " + b.getAny_fabricacio());
+        b.setAny_fabricacio(2024);
+        
+        System.out.println("\nIntent de canvi a la propietat Any de fabricació.");
+        System.out.println("Valor actual: " + b.getAny_fabricacio());
+        System.out.println("Nou valor: " + b.getAny_fabricacio());
+        b.setAny_fabricacio(2010);
     }
     
 }
